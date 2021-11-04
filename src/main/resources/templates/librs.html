@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head th:replace="plantilla::head">
+        <title>Pc2</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container" th:replace="plantilla::menu"></div>
+        <div class="container" style="margin-top: 40px; margin: 0 auto; max-width: 500px">
+            <a href="/create" class="text-info" style="text-decoration: none; font-weight: bold">Add</a>
+            <table class="table" style="max-width: 600px" >
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">IdAutor</th>
+                        <th scope="col">IdEditorial</th>
+                        <th scope="col" colspan="2">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="lib :${librs}">
+                        <th scope="row" th:text="${lib.id}"></th>
+                        <td th:text="${lib.nombre}"></td>
+                        <td th:text="${lib.autor.apeau}"></td>
+                        <td th:text="${lib.editorial.nomedi}"></td>
+                        <td>
+                            <a href="#" class="text-success" th:href="@{'/edit/' + ${lib.id}}"><i class="far fa-edit"></i></a>
+                            <a href="#" class="text-danger" th:href="@{'/del/' + ${lib.id}}"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
